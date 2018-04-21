@@ -3,6 +3,7 @@
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var cmd = _interopDefault(require('node-cmd'));
+var ethers = _interopDefault(require('ethers'));
 require('babel-polyfill');
 
 function save (path) {
@@ -12,13 +13,12 @@ function save (path) {
     });
 }
 
-var ethers = require('ethers');
-
 /*=============================================
 
 from Merkle Aidrop Repo:
 
-    reduceMerkleParents
+    reduceMerkleParents,
+    merkleProof
     and reduceMerkleRoot
         
 =============================================*/
@@ -58,6 +58,30 @@ function reduceMerkleRoot(leaves) {
     return output[0];
 }
 
+function merkleProof(index, leaves) {
+
+    var path = index;
+
+    var proof = [];
+
+    while (leaves.length > 1) {
+
+        if (path % 2 == 1) {
+            proof.push(leaves[path - 1]);
+        } else {
+            proof.push(leaves[path + 1]);
+        }
+
+        // Reduce the merkle tree one level
+        leaves = reduceMerkleParents(leaves);
+
+        // Move up
+        path = parseInt(path / 2);
+    }
+
+    return proof;
+}
+
 function hash(arr) {
 
     var zeros32 = '0000000000000000000000000000000000000000000000000000000000000000';
@@ -80,16 +104,31 @@ function hash(arr) {
     });
 }
 
+var utils = {
+    reduceMerkleParents: reduceMerkleParents,
+    reduceMerkleRoot: reduceMerkleRoot,
+    merkleProof: merkleProof,
+    hash: hash
+};
+
 function merkleRoot (ipfsHash) {
     console.log('\n    Getting ' + ipfsHash + ' from IPFS \n');
     cmd.get('ipfs cat ' + ipfsHash, function (err, data, stderr) {
-        console.log('    Computed Merkle Root: \n    ' + reduceMerkleRoot(hash(JSON.parse(data))));
+        console.log('    Computed Merkle Root: \n    ' + utils.reduceMerkleRoot(utils.hash(JSON.parse(data))));
+    });
+}
+
+function merkleProof$1 (index, ipfsHash) {
+    console.log('\n    Getting ' + ipfsHash + ' from IPFS \n');
+    cmd.get('ipfs cat ' + ipfsHash, function (err, data, stderr) {
+        console.log('    Computed Merkle Proof: \n    ' + utils.merkleProof(parseInt(index), utils.hash(JSON.parse(data))));
     });
 }
 
 var index = {
     save: save,
-    merkleRoot: merkleRoot
+    merkleRoot: merkleRoot,
+    merkleProof: merkleProof$1
 };
 
 module.exports = index;

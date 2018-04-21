@@ -1,10 +1,13 @@
 {
   "name": "blockhack2018",
   "version": "0.1.0",
-  "main": "index.js",
+  "main": "truffle-config.js",
   "repository": "git@github.com:NoahMarconi/blockhack2018.git",
   "author": "Noah Marconi <noah.marconi@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf build/"
+  },
   "dependencies": {
     "commander": "^2.15.1",
     "dotenv": "^5.0.1",

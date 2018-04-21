@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const merkleTools = require('..');
+const merkleTools = require('../index.js');
 const pkg = require('./../package.json');
 
 program
@@ -21,8 +21,16 @@ program
         merkleTools.merkleRoot(file);
     });
     
-    // .command('publish <ipfs-hash> <mrkle-root>', 'Publish IPFS hash and Merkle Root')
-    // .command('proof <index>', 'Get merkle proof for index')
+program
+    .command('merkle-proof <file> <index>')
+    .description('Get merkle proof for index')
+    .action(function(file, index, opts) {
+        merkleTools.merkleProof(index, file);
+    })
+
+    // .command('publish <ipfs-hash> <merkle-root>', 'Publish IPFS hash and Merkle Root')
+    
+    
 
 
 
