@@ -6,6 +6,7 @@
   "author": "Noah Marconi <noah.marconi@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.15.1",
     "dotenv": "^5.0.1",
     "zeppelin-solidity": "^1.8.0"
   },
