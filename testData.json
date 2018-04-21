@@ -1,0 +1,13 @@
+[
+    { "address": "0x00", "permission": "admin" },
+    { "address": "0x02", "permission": "view" },
+    { "address": "0x02", "permission": "view" },
+    { "address": "0x03", "permission": "view" },
+    { "address": "0x04", "permission": "view" },
+    { "address": "0x05", "permission": "view" },
+    { "address": "0x06", "permission": "admin" },
+    { "address": "0x07", "permission": "view" },
+    { "address": "0x08", "permission": "view" },
+    { "address": "0x09", "permission": "view" },
+    { "address": "0x10", "permission": "view" }
+]
