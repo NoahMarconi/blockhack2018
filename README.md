@@ -1,1 +1,0 @@
-# blockhack2018
