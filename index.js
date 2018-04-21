@@ -125,10 +125,19 @@ function merkleProof$1 (index, ipfsHash) {
     });
 }
 
+function publish (rootHash, ipfsHash) {
+    console.log('Publishing Merkle Root' + rootHash);
+    console.log('Publishing IPFS Hash' + ipfsHash);
+    cmd.get('truffle exec publishHashes.js ' + rootHash + ' ' + ipfsHash, function (err, data, stderr) {
+        console.log(data);
+    });
+}
+
 var index = {
     save: save,
     merkleRoot: merkleRoot,
-    merkleProof: merkleProof$1
+    merkleProof: merkleProof$1,
+    publish: publish
 };
 
 module.exports = index;

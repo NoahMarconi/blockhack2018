@@ -26,12 +26,14 @@ program
     .description('Get merkle proof for index')
     .action(function(file, index, opts) {
         merkleTools.merkleProof(index, file);
-    })
+    });
 
-    // .command('publish <ipfs-hash> <merkle-root>', 'Publish IPFS hash and Merkle Root')
-    
-    
-
+program
+    .command('publish <merkle-root> <ipfs-hash>')
+    .description('Publish IPFS hash and Merkle Root')
+    .action(function(merkleRoot, ipfsHash) {
+        merkleTools.publish(merkleRoot, ipfsHash);
+    });
 
 
 program.parse(process.argv);
