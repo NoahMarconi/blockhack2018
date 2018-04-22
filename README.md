@@ -51,7 +51,7 @@ We assume raw data is in JSON format structured as shown here:
 ]
 ```
 
-In our demonstration, 1 is and admin an 0 is view only access. However, any range of permission schemes can be supported.
+In our demonstration, 1 is and admin and 0 is view only access. However, any range of permission schemes can be supported.
 
 ### Raw Data to IPFS
 
@@ -114,7 +114,7 @@ $ node bin/merk-tools.js merkle-proof QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbM
 
 ### Verify
 
-The `verify` command verifies that a partifular address is an admin. Verification relies on the merkle proof to determine permission level.
+The `verify` command verifies that a particular address is an admin. Verification relies on the merkle proof to determine permission level.
 
 
 ```
