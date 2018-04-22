@@ -11,16 +11,19 @@ contract MerklePermission is Ownable {
     // todo bytes not string
     string public ipfsHash;
 
-    modifier onlyAdmin(uint256 index, address checkAddress, uint8 permission, bytes32[] proof) {
+    modifier onlyAdmin(uint256 index, address checkAddress, uint256 permission, bytes32[] proof) {
         require(isAdmin(index, checkAddress, permission, proof));
         _;
     }
 
-    function isAdmin(uint256 index, address checkAddress, uint8 permission, bytes32[] proof)
+    function isAdmin(uint256 index, address checkAddress, uint256 permission, bytes32[] proof)
         public
         view
         returns(bool)
     {
+        // Admin is 1;
+        require(permission == 1);
+
         // Compute the merkle root
         bytes32 node = keccak256(index, checkAddress, permission);
         uint256 path = index;

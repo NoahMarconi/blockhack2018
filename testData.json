@@ -1,13 +1,12 @@
 [
-    { "address": "0x00", "permission": "admin" },
-    { "address": "0x02", "permission": "view" },
-    { "address": "0x02", "permission": "view" },
-    { "address": "0x03", "permission": "view" },
-    { "address": "0x04", "permission": "view" },
-    { "address": "0x05", "permission": "view" },
-    { "address": "0x06", "permission": "admin" },
-    { "address": "0x07", "permission": "view" },
-    { "address": "0x08", "permission": "view" },
-    { "address": "0x09", "permission": "view" },
-    { "address": "0x10", "permission": "view" }
+    { "address": "0x5a10c2afdbbddd6374318ff754dc1f1852403e2c", "permission": 1 },
+    { "address": "0xcf0aa32424fc4cb0e0b6ce34bc5134f2875c068a", "permission": 0 },
+    { "address": "0xe8570478ea019edf1deaf114f9545282075bcdeb", "permission": 0 },
+    { "address": "0x04cb2f244c974e8607ce25c80860234add63fcc3", "permission": 1 },
+    { "address": "0xdf4271fc55e4eca22831543370b2ffda3a0672fe", "permission": 0 },
+    { "address": "0xdeb29b6cd55de7c17d1644db71b693f091481bfc", "permission": 0 },
+    { "address": "0x770d5125d8eb0fb9851585d55845b782e6769038", "permission": 1 },
+    { "address": "0x2d84b2c1512c45f10cc147978deaba04137bae6b", "permission": 1 },
+    { "address": "0x1bb6893e787d02ecc4270d87005f65f3a6390820", "permission": 0 },
+    { "address": "0xeb4711fa1c9faa6adee37566965fc8f239b0f00c", "permission": 1 }
 ]

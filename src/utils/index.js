@@ -82,9 +82,7 @@ function hash(arr) {
         let index = zeros32 + (_index).toString(16);
         index = index.substring(index.length - 64);
         
-        let permission = zeros32 + ethers.utils.hexlify(
-            ethers.utils.toUtf8Bytes(_permission)
-        ).substring(2);
+        let permission = zeros32 + (_permission).toString(16);
         permission = permission.substring(permission.length - 64);
 
         return ethers.utils.keccak256('0x' + index + address + permission)
