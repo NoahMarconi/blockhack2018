@@ -11,8 +11,8 @@ contract MerklePermission is Ownable {
     // todo bytes not string
     string public ipfsHash;
 
-    modifier onlyAdmin(uint256 index, address checkAddress, uint256 permission, bytes32[] proof) {
-        require(isAdmin(index, checkAddress, permission, proof));
+    modifier onlyAdmin(uint256 index, uint256 permission, bytes32[] proof) {
+        require(isAdmin(index, msg.sender, permission, proof));
         _;
     }
 
