@@ -39,7 +39,7 @@ Data intensive use cases, such as suply chain management or even access manageme
 
 ## Solution
 
-We build off of Richard Moores [Merkle AirDrops](https://blog.ricmoo.com/merkle-air-drops-e6406945584d) and introduce two novel additions:
+We build off of Richard Moore's [Merkle AirDrops](https://blog.ricmoo.com/merkle-air-drops-e6406945584d) and introduce two novel additions:
 
   1. Pair with IPFS storage for data persistance;
   2. Demonstrate a new use case.
