@@ -35,6 +35,12 @@ program
         merkleTools.publish(merkleRoot, ipfsHash);
     });
 
+program
+    .command('verify <index> <address> <permission> <proof>')
+    .description('Verify Proof On-Chain')
+    .action(function(index, address, permission, proof) {
+        merkleTools.verify(index, address, permission, proof);
+    });
 
 program.parse(process.argv);
 

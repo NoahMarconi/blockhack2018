@@ -93,9 +93,35 @@ function hash(arr) {
     });
 }
 
+/**
+ * 
+ * @param {Number} index - Index of value in leaf array.
+ * @param {String} leafHash - Hashed leaf node.
+ * @param {Array} merkleProof - Merkle proof hashes.
+ * @param {String} merkleRoot - Merkle root to check against.
+ */
+function checkMerkleProof(index, leafHash, merkleProof, merkleRoot) {
+    
+    var node = leafHash;
+    var path = index;
+    
+    for (var i = 0; i < merkleProof.length; i += 1) {
+        // Odd / Even check
+        if ((path & 0x01) == 1) {
+            node = ethers.utils.keccak256(merkleProof[i] + node.substring(2));
+        } else {
+            node = ethers.utils.keccak256(node + merkleProof[i].substring(2));
+        }
+        path = parseInt(path / 2);
+    }
+    
+    return node === merkleRoot;
+}
+
 export default {
     reduceMerkleParents,
     reduceMerkleRoot,
     merkleProof,
-    hash
+    hash,
+    checkMerkleProof
 }
