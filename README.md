@@ -9,6 +9,23 @@
   - [x] Read IPFS data and get merkle proof
   - [x] Exercise permissions
 
+```
+$ node bin/merk-tools.js  Usage: merk-tools [options] [command]
+  Options:
+
+    -V, --version                                  output the version number
+    -h, --help                                     output usage information
+
+  Commands:
+
+    save <file>                                    Save to IPFS
+    merkle-root <file>                             Get Merkle Root
+    merkle-proof <file> <index>                    Get merkle proof for index
+    publish <merkle-root> <ipfs-hash>              Publish IPFS hash and Merkle Root
+    verify <index> <address> <permission> <proof>  Verify Proof On-Chain
+```
+
+
 
 # Team Merk
 
