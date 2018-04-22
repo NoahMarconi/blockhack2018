@@ -10,6 +10,6 @@ module.exports = async function(callback) {
     await instance.setHashes(process.argv[rootIdx], process.argv[ipfsIdx]);
     const rootHash = await instance.rootHash();
     const ipfsHash = await instance.ipfsHash();
-    console.log('rootHash set to: ' + rootHash);
-    console.log('ipfsHash set to: ' + ipfsHash);
+    console.log('    rootHash set to: ' + rootHash);
+    console.log('    ipfsHash set to: ' + ipfsHash);
 }

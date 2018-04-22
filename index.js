@@ -7,7 +7,7 @@ var ethers = _interopDefault(require('ethers'));
 require('babel-polyfill');
 
 function save (path) {
-    console.log('Saving ' + path + ' to IPFS');
+    console.log('\n    Saving ' + path + ' to IPFS');
     cmd.get('ipfs add ' + path, function (err, data, stderr) {
         console.log(data);
     });
@@ -93,7 +93,7 @@ function hash(arr) {
         var index = zeros32 + _index.toString(16);
         index = index.substring(index.length - 64);
 
-        var permission = zeros32 + ethers.utils.hexlify(ethers.utils.toUtf8Bytes(_permission)).substring(2);
+        var permission = zeros32 + _permission.toString(16);
         permission = permission.substring(permission.length - 64);
 
         return ethers.utils.keccak256('0x' + index + address + permission);
@@ -126,8 +126,8 @@ function merkleProof$1 (index, ipfsHash) {
 }
 
 function publish (rootHash, ipfsHash) {
-    console.log('Publishing Merkle Root' + rootHash);
-    console.log('Publishing IPFS Hash' + ipfsHash);
+    console.log('\n    Publishing Merkle Root: ' + rootHash);
+    console.log('    Publishing IPFS Hash: ' + ipfsHash);
     cmd.get('truffle exec publishHashes.js ' + rootHash + ' ' + ipfsHash, function (err, data, stderr) {
         console.log(data);
     });

@@ -16,18 +16,18 @@ Using Merkle Roots to make large state updates on the public chain encompassed i
 
 ## Problem
 
-Smart Contract development on the public blockchain is unlike other paradigms. Storage is not cheap by any stretch of the imagination should be used a infrequently as possible.
+Smart Contract development on the public blockchain is unlike other paradigms. Storage is not cheap by any stretch of the imagination and should be used as infrequently as possible.
 
 Data intensive use cases, such as suply chain management or even access management for a large organization are non starters due to storage costs. 
 
 ## Solution
 
-We build off of Richard Moores [Merkle AirDrops](https://blog.ricmoo.com/merkle-air-drops-e6406945584d) and introduce to novel additions:
+We build off of Richard Moores [Merkle AirDrops](https://blog.ricmoo.com/merkle-air-drops-e6406945584d) and introduce two novel additions:
 
   1. Pair with IPFS storage for data persistance;
   2. Demonstrate a new use case.
 
-The specific use case we demonstrate is updating permissions, access control, for any number of parties, without publishing thier addresses to the public chain. Should permissions change, a single root hash is published to the smart contract along with the ipfs hash of the latest dataset.
+The specific use case we demonstrate is updating permissions, i.e. access control, for any number of parties, without publishing thier addresses to the public chain. Should permissions change, a single root hash is published to the smart contract along with the IPFS hash of the latest dataset.
 
 The publishing of both hashes means the smart contract is always able to respond to the latest permission structure and users are always able to obtain thier merkle proofs from the IPFS dataset.
 
@@ -51,7 +51,7 @@ We assume raw data is in JSON format structured as shown here:
 ]
 ```
 
-In our demonstration, 1 is and admin and 0 is a view only access. However, any range of permission schemes can be supported.
+In our demonstration, 1 is and admin an 0 is view only access. However, any range of permission schemes can be supported.
 
 ### Raw Data to IPFS
 
@@ -61,13 +61,13 @@ In the project directory run `node bin/merk-tools.js save ./testData.json` and t
 
 ```
 Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js save ./testData.json
-Saving ./testData.json to IPFS
+    Saving ./testData.json to IPFS
 added QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG testData.json
 ```
 
 ### IPFS Data to Merkle Root
 
-The `merkle-root` command computes the merkel root hash from the dataset stored on IPFS.
+The `merkle-root` command computes the merkle root hash from the dataset stored on IPFS.
 
 In the project directory run `node bin/merk-tools.js merkle-root QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG` ensuring the hash is the one returned when you ran the `save` command.
 
@@ -86,12 +86,13 @@ The `publish` command persists the merkle root hash and the IPFS hash to the rel
 
 ```
 Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js publish 0xa2da7aca0ce86e4ed4902fb2f0b97d18f1a39e96457601406e8ffd6beffccd29 QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
-Publishing Merkle Root0xa2da7aca0ce86e4ed4902fb2f0b97d18f1a39e96457601406e8ffd6beffccd29
-Publishing IPFS HashQmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
+
+    Publishing Merkle Root: 0xa2da7aca0ce86e4ed4902fb2f0b97d18f1a39e96457601406e8ffd6beffccd29
+    Publishing IPFS Hash: QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
 Using network 'development'.
 
-rootHash set to: 0xa2da7aca0ce86e4ed4902fb2f0b97d18f1a39e96457601406e8ffd6beffccd29
-ipfsHash set to: QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
+    rootHash set to: 0xa2da7aca0ce86e4ed4902fb2f0b97d18f1a39e96457601406e8ffd6beffccd29
+    ipfsHash set to: QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
 ```
 The `set to:` confirmations that are logged read from the chain confirming that the hashes have been correctly set.
 
