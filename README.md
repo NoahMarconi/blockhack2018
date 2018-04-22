@@ -60,7 +60,8 @@ The `save` command saves the raw data to IPFS.
 In the project directory run `node bin/merk-tools.js save ./testData.json` and the IPFS hash is logged to the console:
 
 ```
-Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js save ./testData.json
+$ node bin/merk-tools.js save ./testData.json
+
     Saving ./testData.json to IPFS
 added QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG testData.json
 ```
@@ -72,12 +73,12 @@ The `merkle-root` command computes the merkle root hash from the dataset stored 
 In the project directory run `node bin/merk-tools.js merkle-root QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG` ensuring the hash is the one returned when you ran the `save` command.
 
 ```
-Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js merkle-root QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
+$ node bin/merk-tools.js merkle-root QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
 
     Getting QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG from IPFS
 
     Computed Merkle Root:
-    0xa2da7aca0ce86e4ed4902fb2f0b97d18f1a39e96457601406e8ffd6beffccd29
+    0x893598180931f55c2e4d0ad638fb258455356f9c4177d8340c41ddf756a26222
 ```
 
 ### Publish to Smart Contract
@@ -85,7 +86,7 @@ Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js merkle-root 
 The `publish` command persists the merkle root hash and the IPFS hash to the relevant smart contract.
 
 ```
-Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js publish 0x893598180931f55c2e4d0ad638fb258455356f9c4177d8340c41ddf756a26222 QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
+$ node bin/merk-tools.js publish 0x893598180931f55c2e4d0ad638fb258455356f9c4177d8340c41ddf756a26222 QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
 
     Publishing Merkle Root: 0x893598180931f55c2e4d0ad638fb258455356f9c4177d8340c41ddf756a26222
     Publishing IPFS Hash: QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG
@@ -101,12 +102,12 @@ The `set to:` confirmations that are logged read from the chain confirming that 
 The `merkle-proof` command computes the merkle proof from a particular address. As there can be multiple permissions per address, an index is required as input instead of the address.
 
 ```
-Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js merkle-proof QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG 5
+$ node bin/merk-tools.js merkle-proof QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG 6
 
     Getting QmUbr6QEAgSxraQEm1YutLGGNKU5sceLjL1SSxDJbMhdnG from IPFS
 
     Computed Merkle Proof:
-    0xe3f9d19da85727b4b6d34bf596ae0e65b5c0e48ddfc75d384d3903e7dd9bc241,0x9b32e97554c36e9632ae438783236dfabe5ff34ca911ade46e9e4368b1b11866,0xaabfd2d196411c67659bcdf7fa66d38d8ff675ce05006a23c90a54216426bd4a,0xfdfc4af370dfa446bff2972dbbdf127b822179c8a7fa61260ef0ae18b8a7dc5f
+    0xc9f9fe58366731a2330cc5f4069e0f30a77559cc51443804af0a0e483fd85765,0x4e2eecf11ba0a8c4107fc693c609f8ec16eea441313f44d49f080f8e37a3dda2,0xd2631027d84926112b37abf1716adba457523111b869b650c90fe803b02888d3,0xff58eb23a3139593da470709976eed92196bfb94085c3627c82a1287aa2f4175
 ```
 
 
@@ -117,18 +118,21 @@ The `verify` command verifies that a partifular address is an admin. Verificatio
 
 
 ```
-Noahs-MacBook-Air:blockhack2018 noahmarconi$ node bin/merk-tools.js verify 0 0x5a10c2afdbbddd6374318ff754dc1f1852403e2c 1 "[\"0xb18996966b9ba8f7b20ef1ddd3869fa011ccdad71e1b39575929deb7a5ff4a4d\",\"0x34c284d67383807092c6add3186328b382b1164975f5387a6e32ca5962ac6f6c\",\"0x871e8e7820620e7a1fea87576d8387e2ca1d20754964dfe4b22d0757544a3ccf\",\"0xff58eb23a3139593da470709976eed92196bfb94085c3627c82a1287aa2f4175\"]"
-
+$ node bin/merk-tools.js verify 6 0x770d5125d8eb0fb9851585d55845b782e6769038 1 "[\"0xc9f9fe58366731a2330cc5f4069e0f30a77559cc51443804af0a0e483fd85765\",\"0x4e2eecf11ba0a8c4107fc693c609f8ec16eea441313f44d49f080f8e37a3dda2\",\"0xd2631027d84926112b37abf1716adba457523111b869b650c90fe803b02888d3\",\"0xff58eb23a3139593da470709976eed92196bfb94085c3627c82a1287aa2f4175\"]"
     Verifying permission == 1
-    For address: 0x5a10c2afdbbddd6374318ff754dc1f1852403e2c
+    For address: 0x770d5125d8eb0fb9851585d55845b782e6769038
 Using network 'development'.
 
-    Index: 0
-    Address: 0x5a10c2afdbbddd6374318ff754dc1f1852403e2c
+    Index: 6
+    Address: 0x770d5125d8eb0fb9851585d55845b782e6769038
     Permission: 1
-    Proof: 0xb18996966b9ba8f7b20ef1ddd3869fa011ccdad71e1b39575929deb7a5ff4a4d,0x34c284d67383807092c6add3186328b382b1164975f5387a6e32ca5962ac6f6c,0x871e8e7820620e7a1fea87576d8387e2ca1d20754964dfe4b22d0757544a3ccf,0xff58eb23a3139593da470709976eed92196bfb94085c3627c82a1287aa2f4175
+    Proof: 0xc9f9fe58366731a2330cc5f4069e0f30a77559cc51443804af0a0e483fd85765,0x4e2eecf11ba0a8c4107fc693c609f8ec16eea441313f44d49f080f8e37a3dda2,0xd2631027d84926112b37abf1716adba457523111b869b650c90fe803b02888d3,0xff58eb23a3139593da470709976eed92196bfb94085c3627c82a1287aa2f4175
     Is admin: true
 ```
+
+
+And it works! This address coupled with its merkle proof is confirmed to have admin level permissions.
+
 
 
 
@@ -197,3 +201,26 @@ Root:
 merk.utils.checkMerkleProof(0, "0xcca476cd0be4e945376bd7e3899136574726b9b587dc5801974f9a1aeaa0be3c", ["0xb18996966b9ba8f7b20ef1ddd3869fa011ccdad71e1b39575929deb7a5ff4a4d","0x34c284d67383807092c6add3186328b382b1164975f5387a6e32ca5962ac6f6c","0x871e8e7820620e7a1fea87576d8387e2ca1d20754964dfe4b22d0757544a3ccf","0xff58eb23a3139593da470709976eed92196bfb94085c3627c82a1287aa2f4175"], "0x893598180931f55c2e4d0ad638fb258455356f9c4177d8340c41ddf756a26222")
 ```
 
+```
+var merk = require('./index.js');
+```
+
+```
+var leaves = merk.utils.hash([
+    { "address": "0x5a10c2afdbbddd6374318ff754dc1f1852403e2c", "permission": 1 },
+    { "address": "0xcf0aa32424fc4cb0e0b6ce34bc5134f2875c068a", "permission": 0 },
+    { "address": "0xe8570478ea019edf1deaf114f9545282075bcdeb", "permission": 0 },
+    { "address": "0x04cb2f244c974e8607ce25c80860234add63fcc3", "permission": 1 },
+    { "address": "0xdf4271fc55e4eca22831543370b2ffda3a0672fe", "permission": 0 },
+    { "address": "0xdeb29b6cd55de7c17d1644db71b693f091481bfc", "permission": 0 },
+    { "address": "0x770d5125d8eb0fb9851585d55845b782e6769038", "permission": 1 },
+    { "address": "0x2d84b2c1512c45f10cc147978deaba04137bae6b", "permission": 1 },
+    { "address": "0x1bb6893e787d02ecc4270d87005f65f3a6390820", "permission": 0 },
+    { "address": "0xeb4711fa1c9faa6adee37566965fc8f239b0f00c", "permission": 1 }
+])
+```
+
+
+```{js}
+merk.utils.reduceMerkleRoot(leaves)
+```
