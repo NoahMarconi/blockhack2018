@@ -68,7 +68,7 @@ We assume raw data is in JSON format structured as shown here:
 ]
 ```
 
-In our demonstration, 1 is and admin and 0 is view only access. However, any range of permission schemes can be supported.
+In our demonstration, 1 is an admin and 0 is view only access. However, any range of permission schemes can be supported.
 
 ### Raw Data to IPFS
 
