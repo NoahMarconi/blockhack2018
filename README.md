@@ -27,7 +27,7 @@ $ node bin/merk-tools.js  Usage: merk-tools [options] [command]
 
 
 
-# Team Merk
+# Team Merks
 
 Using Merkle Roots to make large state updates on the public chain encompassed in a single root hash.
 
